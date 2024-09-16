@@ -1,0 +1,24 @@
+{
+  "name": "node_authjwt_cookies",
+  "version": "1.0.0",
+  "description": "autenticacion en NodeJS con JWT, sesion con cookies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eanton71/Node_authJWT_cookies.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "JWT",
+    "Cookies"
+  ],
+  "author": "Enrique Anton Lopez, tutorial Midudev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eanton71/Node_authJWT_cookies/issues"
+  },
+  "homepage": "https://github.com/eanton71/Node_authJWT_cookies#readme"
+}
