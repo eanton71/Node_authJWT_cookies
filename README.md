@@ -13,3 +13,8 @@
   "extends":"standard"
 }
 ````
+### ES6, import en vez de require (CommonJS)
+- En package.json:
+````json
+"type": "module" , 
+````
