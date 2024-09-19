@@ -9,9 +9,22 @@ app.set('view engine', 'ejs')
 //
 app.use(express.json())
 app.use(cookieParser())
-
+app.use((req, res, next) => {
+  const token = req.cookies.access_token
+  let data = null
+  req.session = { user: null }
+  try {
+    data = jwt.verify(token, SECRET_JWT_KEY)
+    req.session.user = data
+  } catch (error) {
+    // req.session.user = null
+    console.log(error.message)
+  }
+  next()
+})
 app.get('/', (req, res) => {
-  res.render('index')
+  const { user } = req.session
+  res.render('index', user)
 })
 app.post('/login', async (req, res) => {
   const { username, password } = req.body
@@ -34,17 +47,17 @@ app.post('/login', async (req, res) => {
 })
 
 app.post('/register', async (req, res) => {
-  const { username, password } = req.body
-
-  try {
-    const id = await UserRepository.create({ username, password })
-    res.send({ id })
-  } catch (error) {
-    res.status(400).send(error.message) // no mandar el error desde le repositorio
-  }
+  const { user } = req.session
+  if (!user) return res.status(403).send('Access not authorized')
+  res.render('protected', user)
+ 
 })
 
-app.post('/logout', (req, res) => { })
+app.post('/logout', (req, res) => {
+    res
+        .clearCookie('access_token')
+    .send({ message: 'Logged out successfully' })
+ })
 
 app.get('/protected', (req, res) => {
   const token = req.cookies.access_token
