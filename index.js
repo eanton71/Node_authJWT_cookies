@@ -50,14 +50,13 @@ app.post('/register', async (req, res) => {
   const { user } = req.session
   if (!user) return res.status(403).send('Access not authorized')
   res.render('protected', user)
- 
 })
 
 app.post('/logout', (req, res) => {
-    res
-        .clearCookie('access_token')
+  res
+    .clearCookie('access_token')
     .send({ message: 'Logged out successfully' })
- })
+})
 
 app.get('/protected', (req, res) => {
   const token = req.cookies.access_token
