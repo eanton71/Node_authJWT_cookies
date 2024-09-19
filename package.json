@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "autenticacion en NodeJS con JWT, sesion con cookies",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "start": "node index.js",
+    "build": "tsc",
+    "dev": "node --watch index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +24,19 @@
   "bugs": {
     "url": "https://github.com/eanton71/Node_authJWT_cookies/issues"
   },
-  "homepage": "https://github.com/eanton71/Node_authJWT_cookies#readme"
+  "homepage": "https://github.com/eanton71/Node_authJWT_cookies#readme",
+  "devDependencies": {
+    "standard": "^17.1.2"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
+    "db-local": "^3.1.0",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2"
+  }
 }
